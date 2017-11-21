@@ -10,11 +10,13 @@ package internal
 
 import BuildPaths._
 import BuildStreams._
+
 import collection.mutable
 import compiler.Eval
-import Def.{ isDummy, ScopedKey, ScopeLocal, Setting }
+import Def.{ ScopeLocal, ScopedKey, Setting, isDummy }
 import java.io.File
 import java.net.URI
+
 import Keys.{
   appConfiguration,
   baseDirectory,
@@ -36,13 +38,14 @@ import Keys.{
 import Project.inScope
 import sbt.internal.inc.classpath.ClasspathUtilities
 import sbt.librarymanagement.ivy.{ InlineIvyConfiguration, IvyDependencyResolution, IvyPaths }
-import sbt.internal.inc.{ ZincUtil, ScalaInstance }
+import sbt.internal.inc.{ ScalaInstance, ZincUtil }
 import sbt.internal.util.Attributed.data
 import sbt.internal.util.Types.const
 import sbt.internal.util.{ Attributed, Settings, ~> }
 import sbt.io.{ GlobFilter, IO, Path }
-import sbt.librarymanagement.{ Configuration, Configurations, Resolver }
-import sbt.util.{ Show, Logger }
+import sbt.librarymanagement.{ Configuration, Configurations, DependencyResolution, Resolver }
+import sbt.util.{ Logger, Show }
+
 import scala.annotation.tailrec
 import scala.tools.nsc.reporters.ConsoleReporter
 import Scope.GlobalScope
@@ -88,7 +91,8 @@ private[sbt] object Load {
         .withPaths(IvyPaths(baseDirectory, bootIvyHome(state.configuration)))
         .withResolvers(Resolver.combineDefaultResolvers(Vector.empty))
         .withLog(log)
-    val dependencyResolution = IvyDependencyResolution(ivyConfiguration)
+    val dependencyResolution: DependencyResolution =
+      sbt.librarymanagement.coursier.CoursierDependencyResolution()
     val si = ScalaInstance(scalaProvider.version, scalaProvider.launcher)
     val zincDir = BuildPaths.getZincDirectory(state, globalBase)
     val classpathOptions = ClasspathOptionsUtil.boot

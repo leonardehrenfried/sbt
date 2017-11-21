@@ -25,6 +25,7 @@ object Dependencies {
 
   private val libraryManagementCore = "org.scala-sbt" %% "librarymanagement-core" % lmVersion
   private val libraryManagementIvy = "org.scala-sbt" %% "librarymanagement-ivy" % lmVersion
+  private val libraryManagementCoursier = "org.scala-sbt" %% "librarymanagement-coursier" % lmVersion
 
   val launcherInterface = "org.scala-sbt" % "launcher-interface" % "1.0.3"
   val rawLauncher = "org.scala-sbt" % "launcher" % "1.0.3"
@@ -78,6 +79,7 @@ object Dependencies {
   def addSbtLmCore(p: Project): Project =
     addSbtModule(p, sbtLmPath, "lmCore", libraryManagementCore)
   def addSbtLmIvy(p: Project): Project = addSbtModule(p, sbtLmPath, "lmIvy", libraryManagementIvy)
+  def addSbtLmCoursier(p: Project): Project = addSbtModule(p, sbtLmPath, "lmCoursier", libraryManagementCoursier)
 
   def addSbtCompilerInterface(p: Project): Project =
     addSbtModule(p, sbtZincPath, "compilerInterface", compilerInterface)

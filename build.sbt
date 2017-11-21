@@ -532,6 +532,7 @@ lazy val mainProj = (project in file("main"))
     addSbtUtilLogging,
     addSbtLmCore,
     addSbtLmIvy,
+    addSbtLmCoursier,
     addSbtCompilerInterface,
     addSbtZincCompile
   )
