@@ -38,6 +38,9 @@ def buildLevelSettings: Seq[Setting[_]] =
       scalafmtOnCompile := true,
       scalafmtOnCompile in Sbt := false,
       scalafmtVersion := "1.3.0",
+      // TODO: remove before merging
+      sources in (Compile,doc) := Seq.empty,
+      publishArtifact in (Compile, packageDoc) := false,
     ))
 
 def commonSettings: Seq[Setting[_]] = Def.settings(
