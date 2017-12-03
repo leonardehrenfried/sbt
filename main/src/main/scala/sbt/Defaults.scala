@@ -1914,7 +1914,8 @@ object Classpaths {
             .withConfigurationsToRetrieve(configurationsToRetrieve.value map { _.toVector }))
       else None
     },
-    dependencyResolution := sbt.librarymanagement.coursier.CoursierDependencyResolution(),
+    dependencyResolution := sbt.librarymanagement.coursier
+      .CoursierDependencyResolution(resolvers.value),
     publisher := IvyPublisher(ivyConfiguration.value),
     ivyConfiguration := mkIvyConfiguration.value,
     ivyConfigurations := {

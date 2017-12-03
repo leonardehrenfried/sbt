@@ -92,7 +92,7 @@ private[sbt] object Load {
         .withResolvers(Resolver.combineDefaultResolvers(Vector.empty))
         .withLog(log)
     val dependencyResolution: DependencyResolution =
-      sbt.librarymanagement.coursier.CoursierDependencyResolution()
+      sbt.librarymanagement.coursier.CoursierDependencyResolution(ivyConfiguration.resolvers)
     val si = ScalaInstance(scalaProvider.version, scalaProvider.launcher)
     val zincDir = BuildPaths.getZincDirectory(state, globalBase)
     val classpathOptions = ClasspathOptionsUtil.boot
