@@ -79,10 +79,7 @@ object Dependencies {
   def addSbtLmCore(p: Project): Project =
     addSbtModule(p, sbtLmPath, "lmCore", libraryManagementCore)
   def addSbtLmIvy(p: Project): Project = addSbtModule(p, sbtLmPath, "lmIvy", libraryManagementIvy)
-  def addSbtLmCoursier(p: Project): Project = {
-    addSbtPlugin("io.get-coursier" % "sbt-shared" % "1.1.0-M1")
-    addSbtModule(p, sbtLmPath, "lmCoursier", libraryManagementCoursier)
-  }
+  def addSbtLmCoursier(p: Project): Project = addSbtModule(p, sbtLmPath, "lmCoursier", libraryManagementCoursier)
 
   def addSbtCompilerInterface(p: Project): Project =
     addSbtModule(p, sbtZincPath, "compilerInterface", compilerInterface)
