@@ -1915,7 +1915,7 @@ object Classpaths {
       else None
     },
     dependencyResolution := sbt.librarymanagement.coursier
-      .CoursierDependencyResolution(resolvers.value),
+      .CoursierDependencyResolution(fullResolvers.value),
     publisher := IvyPublisher(ivyConfiguration.value),
     ivyConfiguration := mkIvyConfiguration.value,
     ivyConfigurations := {
