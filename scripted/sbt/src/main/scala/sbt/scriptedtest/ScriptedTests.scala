@@ -268,7 +268,9 @@ final class ScriptedTests(
     s"""
       |package sbt.scripted
       |
-      |import sbt._, Keys._
+      |import sbt._
+      |import sbt.Keys._
+      |
       |object InstrumentScripted extends AutoPlugin {
       |  override def trigger = allRequirements
       |  override def globalSettings: Seq[Setting[_]] =
