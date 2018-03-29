@@ -10,13 +10,11 @@ package internal
 
 import BuildPaths._
 import BuildStreams._
-
 import collection.mutable
 import compiler.Eval
-import Def.{ ScopeLocal, ScopedKey, Setting, isDummy }
+import Def.{ isDummy, ScopedKey, ScopeLocal, Setting }
 import java.io.File
 import java.net.URI
-
 import Keys.{
   appConfiguration,
   baseDirectory,
@@ -38,14 +36,13 @@ import Keys.{
 import Project.inScope
 import sbt.internal.inc.classpath.ClasspathUtilities
 import sbt.librarymanagement.ivy.{ InlineIvyConfiguration, IvyDependencyResolution, IvyPaths }
-import sbt.internal.inc.{ ScalaInstance, ZincUtil }
+import sbt.internal.inc.{ ZincUtil, ScalaInstance }
 import sbt.internal.util.Attributed.data
 import sbt.internal.util.Types.const
 import sbt.internal.util.{ Attributed, Settings, ~> }
 import sbt.io.{ GlobFilter, IO, Path }
-import sbt.librarymanagement.{ Configuration, Configurations, DependencyResolution, Resolver }
-import sbt.util.{ Logger, Show }
-
+import sbt.librarymanagement.{ Configuration, Configurations, Resolver, DependencyResolution }
+import sbt.util.{ Show, Logger }
 import scala.annotation.tailrec
 import scala.tools.nsc.reporters.ConsoleReporter
 import Scope.GlobalScope
