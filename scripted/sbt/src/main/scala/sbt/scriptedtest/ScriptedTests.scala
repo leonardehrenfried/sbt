@@ -266,6 +266,8 @@ final class ScriptedTests(
    */
   private def createAutoPlugin(testName: String) =
     s"""
+      |package sbt.scripted
+      |
       |import sbt._, Keys._
       |object InstrumentScripted extends AutoPlugin {
       |  override def trigger = allRequirements
