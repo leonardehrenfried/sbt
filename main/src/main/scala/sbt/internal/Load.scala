@@ -89,8 +89,7 @@ private[sbt] object Load {
         .withPaths(IvyPaths(baseDirectory, bootIvyHome(state.configuration)))
         .withResolvers(defaultResolvers)
         .withLog(log)
-    val dependencyResolution: DependencyResolution =
-      sbt.librarymanagement.coursier.CoursierDependencyResolution(defaultResolvers)
+    val dependencyResolution = IvyDependencyResolution(ivyConfiguration)
     val si = ScalaInstance(scalaProvider.version, scalaProvider.launcher)
     val zincDir = BuildPaths.getZincDirectory(state, globalBase)
     val classpathOptions = ClasspathOptionsUtil.boot
